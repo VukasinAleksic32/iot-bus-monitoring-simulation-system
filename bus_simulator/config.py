@@ -1,0 +1,4 @@
+BROKER = "localhost"
+PORT = 1883
+BUS_COUNT = 12
+PUBLISH_INTERVAL = 1.0
