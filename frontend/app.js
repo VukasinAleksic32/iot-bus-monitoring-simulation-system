@@ -75,5 +75,5 @@ async function loadBuses() {
 // Initial load
 loadBuses();
 
-// Refresh every 500ms
-setInterval(loadBuses, 500);
+// Refresh every 1s
+setInterval(loadBuses, 1000);

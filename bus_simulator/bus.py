@@ -128,6 +128,7 @@ class Bus:
                 self.state = "REST"
                 self.state_timer = now
                 self.rest_time = random.uniform(30, 90)
+                self.terminal_waiting_queue = 0
 
             # Normal stop → Travel
             elif (
