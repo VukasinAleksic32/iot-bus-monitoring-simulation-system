@@ -1,3 +1,15 @@
+:root {
+  --color-primary: white;
+  --color-secondary: black;
+  --color-text-muted: darkslategray;
+  --color-travel: dodgerblue;
+  --color-stop: orange;
+  --color-rest:greenyellow;
+  --color-progressbar-default: lightgray;
+  --color-progressbar-primary:dodgerblue;
+  --color-progressbar-secondary:greenyellow;
+}
+
 body {
   background-image: url("./images/bus-background.jpg");
   background-size: cover;
@@ -9,10 +21,10 @@ body {
 .title {
   text-align: center;
   -webkit-text-stroke-width: 1px;
-  -webkit-text-stroke-color: black;
+  -webkit-text-stroke-color: var(--color-secondary);
   font-size: 48px;
   margin-bottom: 30px;
-  color: white;
+  color: var(--color-primary);
 }
 
 .grid {
@@ -24,17 +36,16 @@ body {
 /*CARD*/
 
 .card {
-  background: white;
+  background: var(--color-primary);
   padding: 24px;
   border-radius: 18px;
   box-shadow: 0 12px 24px rgba(0, 0, 0, 0.06);
   display: flex;
   flex-direction: column;
   gap: 18px;
-  border-left: 6px solid transparent;
-  border-right: 1px solid black;
-  border-top: 1px solid black;
-  border-bottom: 1px solid black;
+  border: 1px solid var(--color-secondary);
+  border-left-width: 6px;
+  border-left-color: transparent;
   transition: 0.3s ease;
 }
 
@@ -69,20 +80,20 @@ body {
   border-radius: 12px;
   font-size: 12px;
   font-weight: 700;
-  color: black;
+  color: var(--color-secondary);
 }
 
 .status-badge.travel {
-  background-color: dodgerblue;
-  color: white;
+  background-color: var(--color-travel);
+  color: var(--color-primary);
 }
 
 .status-badge.stop {
-  background-color: orange;
+  background-color: var(--color-stop);
 }
 
 .status-badge.rest {
-  background-color: greenyellow;
+  background-color: var(--color-rest);
 }
 
 /*OCCUPANCY*/
@@ -96,18 +107,19 @@ body {
 .occupancy .number {
   font-size: 42px;
   font-weight: 700;
-  color: dodgerblue;
+  color: var(--color-text-muted);
 }
 
 .occupancy .label {
   font-size: 14px;
-  color: darkslategrey;
-  font-weight: 600;
+  font-weight: 700;
+  color: var(--color-text-muted);
 }
 
 .bus-state {
   font-size: 12px;
-  color: darkslategray;
+  font-weight: 500;
+  color: var(--color-text-muted);
 }
 
 /*PROGRESS BAR*/
@@ -115,7 +127,8 @@ body {
 .progress {
   width: 100%;
   height: 12px;
-  background: #eee;
+  background: var(--color-progressbar-default);
+  border: 1px solid black;
   border-radius: 6px;
   overflow: hidden;
   margin: 6px 0;
@@ -123,7 +136,8 @@ body {
 
 .progress-fill {
   height: 100%;
-  background: linear-gradient(90deg, dodgerblue, greenyellow);
+  background: linear-gradient(90deg, var(--color-progressbar-primary), 
+  var(--color-progressbar-secondary));
   transition: width 0.3s ease;
 }
 
@@ -138,25 +152,25 @@ body {
 
 .stop-label {
   font-size: 14px;
-  color: darkslategray;
+  color: var(--color-text-muted);
 }
 
 .stop-number {
   font-size: 14px;
   font-weight: bold;
-  color: dodgerblue;
+  color: var(--color-secondary);
 }
 
 /*BORDERS*/
 
 .card.travel {
-  border-left-color: dodgerblue;
+  border-left-color: var(--color-travel);
 }
 
 .card.stop {
-  border-left-color: orange;
+  border-left-color: var(--color-stop);
 }
 
 .card.rest {
-  border-left-color: greenyellow;
+  border-left-color: var(--color-rest);
 }
