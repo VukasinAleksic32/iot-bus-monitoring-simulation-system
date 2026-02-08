@@ -5,9 +5,11 @@ from bus import Bus
 import config
 
 # MQTT client setup
-client = mqtt.Client()
+client = mqtt.Client(mqtt.CallbackAPIVersion.VERSION2)
 client.connect(config.BROKER, config.PORT, 60)
 client.loop_start()
+
+print("Bus simulator started. Press Ctrl+C to stop.")
 
 # Initialize buses
 buses = [Bus(i) for i in range(config.BUS_COUNT)]
@@ -23,5 +25,8 @@ try:
         time.sleep(config.PUBLISH_INTERVAL)
 
 except KeyboardInterrupt:
-    client.loop_stop
+    print("\nStopping simulator...")
+finally:
+    client.loop_stop()
     client.disconnect()
+    print("MQTT disconnected.")

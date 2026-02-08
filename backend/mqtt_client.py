@@ -4,13 +4,13 @@ import config
 import database
 
 # Message handler
-def on_message(client, userdata, msg):
-    data = json.loads(msg.payload.decode())
+def on_message(client, userdata, message):
+    data = json.loads(message.payload.decode())
     print("Received:", data)
     database.save_bus(data)
 
 # MQQT client setup
-client = mqtt.Client()
+client = mqtt.Client(mqtt.CallbackAPIVersion.VERSION2)
 client.on_message = on_message
 
 # Start client
