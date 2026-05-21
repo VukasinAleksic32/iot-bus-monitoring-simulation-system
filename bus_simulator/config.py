@@ -1,6 +1,6 @@
-# MQTT broker configuration
-BROKER = "localhost"
-PORT = 1883
+import sys, os
+sys.path.append(os.path.join(os.path.dirname(__file__), ".."))
+from shared.config import BROKER, PORT
 
 # Simulation settings
 BUS_COUNT = 12

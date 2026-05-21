@@ -162,7 +162,7 @@ class Bus:
                 self.state = "STOP"
                 self.state_timer = now
 
-        # API
+        # MQTT payload
         return {
             "bus_id": self.id,
             "line_name": self.line_name,

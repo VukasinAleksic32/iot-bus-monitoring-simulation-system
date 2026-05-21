@@ -64,7 +64,7 @@ echo Installing requirements...
 pip install -r requirements.txt
 
 REM ---------------------------------
-REM Start backend API server
+REM Start backend server
 REM ---------------------------------
 echo Starting backend (Flask)...
 start cmd /k python backend\main.py
@@ -73,7 +73,7 @@ REM ---------------------------------
 REM Start bus simulator
 REM ---------------------------------
 echo Starting bus simulator...
-start cmd /k python bus_simulator\simulator.py
+start cmd /k python bus_simulator\main.py
 
 REM ---------------------------------
 REM Open frontend

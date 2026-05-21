@@ -1,8 +1,10 @@
+import os
 from sqlalchemy import create_engine, Column, Integer, String
 from sqlalchemy.orm import declarative_base, sessionmaker
 
 # Database setup
-engine = create_engine("sqlite:///buses.db", echo=False)
+DB_PATH = os.path.join(os.path.dirname(os.path.abspath(__file__)), "buses.db")
+engine = create_engine(f"sqlite:///{DB_PATH}", echo=False)
 Base = declarative_base()
 Session = sessionmaker(bind=engine)
 
@@ -22,7 +24,7 @@ class Bus(Base):
     state = Column(String)
     stop = Column(Integer)
 
-    # Passenger stats (PER ROUTE)
+    # Passenger stats (per route)
     entered = Column(Integer, default=0)
     exited = Column(Integer, default=0)
     inside = Column(Integer, default=0)
@@ -31,6 +33,7 @@ class Bus(Base):
     capacity = Column(Integer)
     boarding_queue = Column(Integer)
     exit_queue = Column(Integer)
+    terminal_waiting = Column(Integer, default=0)
 
     # Time
     timestamp = Column(Integer)
@@ -43,7 +46,6 @@ Base.metadata.create_all(engine)
 # Save/Update
 def save_bus(data):
     session = Session()
-
     bus = session.get(Bus, data["bus_id"])
 
     if bus is None:
@@ -59,6 +61,7 @@ def save_bus(data):
             capacity=data["capacity"],
             boarding_queue=data["boarding_queue"],
             exit_queue=data["exit_queue"],
+            terminal_waiting=data["terminal_waiting"],
             timestamp=data["timestamp"],
         )
         session.add(bus)
@@ -73,6 +76,7 @@ def save_bus(data):
         bus.capacity = data["capacity"]
         bus.boarding_queue = data["boarding_queue"]
         bus.exit_queue = data["exit_queue"]
+        bus.terminal_waiting = data["terminal_waiting"]
         bus.timestamp = data["timestamp"]
 
     session.commit()
@@ -97,6 +101,7 @@ def get_all_buses():
             "capacity": b.capacity,
             "boarding_queue": b.boarding_queue,
             "exit_queue": b.exit_queue,
+            "terminal_waiting": b.terminal_waiting,
             "timestamp": b.timestamp,
         }
         for b in buses

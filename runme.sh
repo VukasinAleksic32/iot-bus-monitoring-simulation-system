@@ -67,7 +67,7 @@ pip install --upgrade pip
 pip install -r requirements.txt
 
 # ---------------------------------
-# Start backend API server
+# Start backend server
 # ---------------------------------
 echo "Starting backend (Flask)..."
 gnome-terminal -- bash -c "source $(pwd)/.venv/bin/activate; python3 backend/main.py; exec bash"
@@ -76,7 +76,7 @@ gnome-terminal -- bash -c "source $(pwd)/.venv/bin/activate; python3 backend/mai
 # Start bus simulator
 # ---------------------------------
 echo "Starting bus simulator..."
-gnome-terminal -- bash -c "source $(pwd)/.venv/bin/activate; python3 bus_simulator/simulator.py; exec bash"
+gnome-terminal -- bash -c "source $(pwd)/.venv/bin/activate; python3 bus_simulator/main.py; exec bash"
 
 # ---------------------------------
 # Open frontend

@@ -1,18 +1,16 @@
-
 # IoT Bus Monitoring & Simulation System
 
 ![Screenshot of the project](project-screenshot.png)
 
 This project is a simple IoT-based bus monitoring and simulation system designed to demonstrate how real-time vehicle data can be collected, transmitted, and visualized.
 
-The system simulates bus lines that publish data via the MQTT protocol, using Mosquitto as the message broker. A Flask backend application subscribes to these MQTT messages, processes the incoming data, and exposes it through REST API endpoints that can be consumed by a frontend application or other services.
+The system simulates bus lines that publish data via the MQTT protocol, using Mosquitto as the message broker. A Flask backend application subscribes to these MQTT messages, processes the incoming data, and broadcasts updates to the frontend in real time using WebSockets.
 
 The project focuses on:
 
- - Real-time communication using MQTT
- - Backend API development with Flask
- - Message-based data exchange using Mosquitto
- - Practical demonstration of IoT concepts in a web environment
+- Real-time communication using MQTT
+- Backend development with Flask and WebSocket
+- Practical demonstration of IoT concepts in a web environment
 
 This system is intended for educational purposes and serves as a foundation for experimenting with IoT architectures and smart transportation systems.
 
@@ -24,7 +22,7 @@ This system is intended for educational purposes and serves as a foundation for 
 
 **Database:** SQLite
 
-**Messaging & Communication:** MQTT, Mosquitto
+**Messaging & Communication:** MQTT, Mosquitto, WebSocket
 
 **Simulation:** Python
 
@@ -39,7 +37,7 @@ Make sure both Python and Mosquitto are properly installed and available in your
 
 ## Run Locally
 
-***Windows***
+**_Windows_**
 
 Clone the repository:
 
@@ -53,7 +51,7 @@ Run the project:
 
     runme.bat
 
-***Linux***
+**_Linux_**
 
 Clone the repository:
 
@@ -74,4 +72,3 @@ Run the project:
 ## Authors
 
 Vukašin Aleksić
-

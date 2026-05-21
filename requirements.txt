@@ -1,4 +1,4 @@
 flask
-flask_cors
+flask-socketio
 paho-mqtt
 sqlalchemy
