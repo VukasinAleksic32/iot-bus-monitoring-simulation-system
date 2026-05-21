@@ -4,7 +4,7 @@
 
 This project is a simple IoT-based bus monitoring and simulation system designed to demonstrate how real-time vehicle data can be collected, transmitted, and visualized.
 
-The system simulates bus lines that publish data via the MQTT protocol, using Mosquitto as the message broker. A Flask backend application subscribes to these MQTT messages, processes the incoming data, and broadcasts updates to the frontend in real time using WebSockets.
+The system simulates bus lines that publish data via the MQTT protocol, using Mosquitto as the message broker. A Flask backend application subscribes to these MQTT messages, processes the incoming data, and broadcasts updates to the React frontend in real time using WebSockets.
 
 The project focuses on:
 
@@ -16,7 +16,7 @@ This system is intended for educational purposes and serves as a foundation for 
 
 ## Tech Stack
 
-**Frontend:** HTML5, CSS3, JavaScript
+**Frontend:** React, Vite, CSS
 
 **Backend:** Python, Flask, SQLAlchemy
 
@@ -31,9 +31,10 @@ This system is intended for educational purposes and serves as a foundation for 
 ## Prerequisites
 
 - Python
+- Node.js
 - Mosquitto MQTT Broker
 
-Make sure both Python and Mosquitto are properly installed and available in your system PATH.
+Make sure Python, Node.js and Mosquitto are properly installed and available in your system PATH.
 
 ## Run Locally
 
@@ -51,7 +52,7 @@ Run the project:
 
     runme.bat
 
-**_Linux_**
+**_Linux (Ubuntu)_**
 
 Clone the repository:
 

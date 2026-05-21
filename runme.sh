@@ -25,7 +25,7 @@ else
 fi
 
 # ---------------------------------
-# Check if port 1883 is in use
+# Check if port 1883 is already in use
 # ---------------------------------
 if ss -tulnp | grep ":1883" >/dev/null; then
     echo "Port 1883 is already in use. Assuming MQTT broker is running."
@@ -60,11 +60,24 @@ echo "Activating virtual environment..."
 source .venv/bin/activate
 
 # ---------------------------------
-# Install dependencies
+# Install backend dependencies
 # ---------------------------------
 echo "Installing requirements..."
 pip install --upgrade pip
 pip install -r requirements.txt
+
+# ---------------------------------
+# Install frontend dependencies
+# ---------------------------------
+if [ ! -d "frontend/node_modules" ]; then
+    echo "Frontend dependencies not found. Installing..."
+
+    cd frontend || exit
+    npm install
+    cd ..
+else
+    echo "Frontend dependencies already installed."
+fi
 
 # ---------------------------------
 # Start backend server
@@ -79,10 +92,16 @@ echo "Starting bus simulator..."
 gnome-terminal -- bash -c "source $(pwd)/.venv/bin/activate; python3 bus_simulator/main.py; exec bash"
 
 # ---------------------------------
-# Open frontend
+# Start frontend (React)
 # ---------------------------------
-echo "Opening frontend..."
-xdg-open "frontend/index.html" >/dev/null 2>&1 &
+echo "Starting frontend (React)..."
+gnome-terminal -- bash -c "cd $(pwd)/frontend && npm run dev; exec bash"
+
+# ---------------------------------
+# Open browser
+# ---------------------------------
+sleep 3
+xdg-open "http://localhost:5173" >/dev/null 2>&1 &
 
 echo "================================"
 echo " Project started successfully!"

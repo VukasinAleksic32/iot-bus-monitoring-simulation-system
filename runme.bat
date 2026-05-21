@@ -58,10 +58,22 @@ echo Activating virtual environment...
 call .venv\Scripts\activate
 
 REM ---------------------------------
-REM Install dependencies
+REM Install backend dependencies
 REM ---------------------------------
 echo Installing requirements...
 pip install -r requirements.txt
+
+REM ---------------------------------
+REM Install frontend dependencies
+REM ---------------------------------
+if not exist "frontend\node_modules" (
+    echo Frontend dependencies not found. Installing...
+    cd frontend
+    npm install
+    cd ..
+) else (
+    echo Frontend dependencies already installed.
+)
 
 REM ---------------------------------
 REM Start backend server
@@ -76,10 +88,16 @@ echo Starting bus simulator...
 start cmd /k python bus_simulator\main.py
 
 REM ---------------------------------
-REM Open frontend
+REM Start frontend (React)
 REM ---------------------------------
-echo Opening frontend...
-start "" "frontend\index.html"
+echo Starting frontend (React)...
+start cmd /k "cd frontend && npm run dev"
+
+REM ---------------------------------
+REM Open browser
+REM ---------------------------------
+timeout /t 3 > nul
+start "" "http://localhost:5173"
 
 echo ================================
 echo Project started successfully!

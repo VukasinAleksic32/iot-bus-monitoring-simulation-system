@@ -1,0 +1,178 @@
+:root {
+  --color-primary: white;
+  --color-secondary: black;
+  --color-text-muted: darkslategray;
+  --color-travel: dodgerblue;
+  --color-stop: orange;
+  --color-rest: greenyellow;
+  --color-progressbar-default: lightgray;
+  --color-progressbar-primary: dodgerblue;
+  --color-progressbar-secondary: greenyellow;
+}
+
+body {
+  background-color: darkslategray;
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 18px;
+}
+
+.title {
+  text-align: center;
+  -webkit-text-stroke-width: 1px;
+  -webkit-text-stroke-color: var(--color-secondary);
+  font-size: 48px;
+  margin-bottom: 30px;
+  color: var(--color-primary);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 18px;
+}
+
+/*CARD*/
+
+.card {
+  background: var(--color-primary);
+  padding: 24px;
+  border-radius: 18px;
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.06);
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  border: 1px solid var(--color-secondary);
+  border-left-width: 6px;
+  border-left-color: transparent;
+  transition: 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 18px 36px rgba(0, 0, 0, 0.12);
+}
+
+/*HEADER*/
+
+.card-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.bus-icon {
+  font-size: 24px;
+  margin-bottom: 6px;
+}
+
+.bus-title {
+  font-size: 24px;
+  font-weight: 600;
+  flex-grow: 1;
+}
+
+/*STATUS*/
+
+.status-badge {
+  padding: 6px 12px;
+  border-radius: 12px;
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--color-secondary);
+}
+
+.status-badge.travel {
+  background-color: var(--color-travel);
+  color: var(--color-primary);
+}
+
+.status-badge.stop {
+  background-color: var(--color-stop);
+}
+
+.status-badge.rest {
+  background-color: var(--color-rest);
+}
+
+/*OCCUPANCY*/
+
+.occupancy {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.occupancy .number {
+  font-size: 42px;
+  font-weight: 700;
+  color: var(--color-text-muted);
+}
+
+.occupancy .label {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--color-text-muted);
+}
+
+.bus-state {
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--color-text-muted);
+}
+
+/*PROGRESS BAR*/
+
+.progress {
+  width: 100%;
+  height: 12px;
+  background: var(--color-progressbar-default);
+  border: 1px solid black;
+  border-radius: 6px;
+  overflow: hidden;
+  margin: 6px 0;
+}
+
+.progress-fill {
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    var(--color-progressbar-primary),
+    var(--color-progressbar-secondary)
+  );
+  transition: width 0.3s ease;
+}
+
+/*FOOTER*/
+
+.footer {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 12px;
+}
+
+.stop-label {
+  font-size: 14px;
+  color: var(--color-text-muted);
+}
+
+.stop-number {
+  font-size: 14px;
+  font-weight: bold;
+  color: var(--color-secondary);
+}
+
+/*BORDERS*/
+
+.card.travel {
+  border-left-color: var(--color-travel);
+}
+
+.card.stop {
+  border-left-color: var(--color-stop);
+}
+
+.card.rest {
+  border-left-color: var(--color-rest);
+}
