@@ -1,7 +1,6 @@
 import BusCard from "./BusCard";
 
 function BusGrid({ buses }) {
-  // Sort by line number
   const sorted = [...buses.values()].sort(
     (a, b) => a.line_number - b.line_number,
   );

@@ -1,56 +1,127 @@
+@import url("https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600;700&family=Barlow+Condensed:wght@600;700&display=swap");
+
 :root {
-  --color-primary: white;
-  --color-secondary: black;
-  --color-text-muted: darkslategray;
-  --color-travel: dodgerblue;
-  --color-stop: orange;
-  --color-rest: greenyellow;
-  --color-progressbar-default: lightgray;
-  --color-progressbar-primary: dodgerblue;
-  --color-progressbar-secondary: greenyellow;
+  --color-bg: #0d1117;
+  --color-bg-secondary: #161b22;
+  --color-card: #ffffff;
+  --color-text-primary: #111827;
+  --color-text-secondary: #374151;
+  --color-text-muted: #6b7280;
+
+  --color-travel: #2d6be4;
+  --color-travel-light: #eef2fd;
+  --color-stop: #c97d12;
+  --color-stop-light: #fdf6e8;
+  --color-rest: #0e9e72;
+  --color-rest-light: #eafaf5;
+
+  --color-progressbar-default: #e5e7eb;
+  --color-progressbar-primary: #2d6be4;
+  --color-progressbar-secondary: #0e9e72;
+
+  --shadow-card: 0 1px 3px rgba(0, 0, 0, 0.08), 0 4px 20px rgba(0, 0, 0, 0.1);
+  --shadow-card-hover: 0 8px 40px rgba(0, 0, 0, 0.18);
+  --radius-card: 14px;
+  --radius-badge: 20px;
 }
 
 body {
-  background-color: darkslategray;
-  font-family: Arial, sans-serif;
+  background: radial-gradient(ellipse at top, #1a1d2e 0%, #0d1117 60%);
+  background-attachment: fixed;
+  font-family: "Barlow", sans-serif;
   margin: 0;
-  padding: 18px;
+  padding: 28px 24px;
+  min-height: 100vh;
+}
+
+.container {
+  max-width: 1440px;
+  margin: 0 auto;
 }
 
 .title {
-  text-align: center;
-  -webkit-text-stroke-width: 1px;
-  -webkit-text-stroke-color: var(--color-secondary);
-  font-size: 48px;
-  margin-bottom: 30px;
-  color: var(--color-primary);
+  text-align: left;
+  font-family: "Barlow Condensed", sans-serif;
+  font-size: 26px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #ffffff;
+  margin-bottom: 28px;
+  text-shadow: none;
 }
 
 .grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-  gap: 18px;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 20px;
+}
+
+/*STATS BAR*/
+
+.stats-bar {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 24px;
+}
+
+.stat {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 10px;
+  padding: 12px 20px;
+}
+
+.stat-value {
+  font-family: "Barlow Condensed", sans-serif;
+  font-size: 28px;
+  font-weight: 700;
+  color: #ffffff;
+  line-height: 1;
+}
+
+.stat-value.travel {
+  color: var(--color-travel);
+}
+.stat-value.stop {
+  color: var(--color-stop);
+}
+.stat-value.rest {
+  color: var(--color-rest);
+}
+
+.stat-label {
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: rgba(255, 255, 255, 0.45);
 }
 
 /*CARD*/
 
 .card {
-  background: var(--color-primary);
+  background: var(--color-card);
   padding: 24px;
-  border-radius: 18px;
-  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.06);
+  border-radius: var(--radius-card);
+  box-shadow: var(--shadow-card);
   display: flex;
   flex-direction: column;
-  gap: 18px;
-  border: 1px solid var(--color-secondary);
-  border-left-width: 6px;
+  gap: 16px;
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  border-left-width: 4px;
   border-left-color: transparent;
-  transition: 0.3s ease;
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
 }
 
 .card:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 18px 36px rgba(0, 0, 0, 0.12);
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-card-hover);
 }
 
 /*HEADER*/
@@ -58,41 +129,47 @@ body {
 .card-header {
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 10px;
 }
 
 .bus-icon {
-  font-size: 24px;
-  margin-bottom: 6px;
+  font-size: 20px;
+  margin-bottom: 0;
+  opacity: 0.75;
 }
 
 .bus-title {
-  font-size: 24px;
-  font-weight: 600;
+  font-size: 20px;
+  font-weight: 700;
   flex-grow: 1;
+  color: var(--color-text-primary);
+  letter-spacing: -0.01em;
 }
 
 /*STATUS*/
 
 .status-badge {
-  padding: 6px 12px;
-  border-radius: 12px;
-  font-size: 12px;
+  padding: 4px 12px;
+  border-radius: var(--radius-badge);
+  font-size: 11px;
   font-weight: 700;
-  color: var(--color-secondary);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
 }
 
 .status-badge.travel {
-  background-color: var(--color-travel);
-  color: var(--color-primary);
+  background-color: var(--color-travel-light);
+  color: var(--color-travel);
 }
 
 .status-badge.stop {
-  background-color: var(--color-stop);
+  background-color: var(--color-stop-light);
+  color: var(--color-stop);
 }
 
 .status-badge.rest {
-  background-color: var(--color-rest);
+  background-color: var(--color-rest-light);
+  color: var(--color-rest);
 }
 
 /*OCCUPANCY*/
@@ -104,15 +181,20 @@ body {
 }
 
 .occupancy .number {
-  font-size: 42px;
+  font-family: "Barlow Condensed", sans-serif;
+  font-size: 52px;
   font-weight: 700;
-  color: var(--color-text-muted);
+  color: var(--color-text-primary);
+  line-height: 1;
+  letter-spacing: -0.02em;
 }
 
 .occupancy .label {
-  font-size: 14px;
-  font-weight: 700;
+  font-size: 11px;
+  font-weight: 600;
   color: var(--color-text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
 }
 
 .bus-state {
@@ -125,12 +207,12 @@ body {
 
 .progress {
   width: 100%;
-  height: 12px;
+  height: 6px;
   background: var(--color-progressbar-default);
-  border: 1px solid black;
-  border-radius: 6px;
+  border: none;
+  border-radius: 3px;
   overflow: hidden;
-  margin: 6px 0;
+  margin: 4px 0;
 }
 
 .progress-fill {
@@ -140,7 +222,8 @@ body {
     var(--color-progressbar-primary),
     var(--color-progressbar-secondary)
   );
-  transition: width 0.3s ease;
+  border-radius: 3px;
+  transition: width 0.4s ease;
 }
 
 /*FOOTER*/
@@ -148,8 +231,10 @@ body {
 .footer {
   display: flex;
   align-items: center;
-  gap: 6px;
-  margin-top: 12px;
+  gap: 8px;
+  padding-top: 12px;
+  margin-top: 4px;
+  border-top: 1px solid #f3f4f6;
 }
 
 .stop-label {
@@ -158,12 +243,12 @@ body {
 }
 
 .stop-number {
-  font-size: 14px;
-  font-weight: bold;
-  color: var(--color-secondary);
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--color-text-secondary);
 }
 
-/*BORDERS*/
+/*CARD STATE BORDERS*/
 
 .card.travel {
   border-left-color: var(--color-travel);
@@ -175,4 +260,39 @@ body {
 
 .card.rest {
   border-left-color: var(--color-rest);
+}
+
+/*RESPONSIVNESS*/
+
+@media (max-width: 768px) {
+  body {
+    padding: 16px;
+  }
+
+  .stats-bar {
+    gap: 8px;
+  }
+
+  .stat {
+    padding: 10px 14px;
+    flex: 1;
+  }
+
+  .stat-value {
+    font-size: 22px;
+  }
+
+  .title {
+    font-size: 28px;
+    margin-bottom: 24px;
+  }
+
+  .grid {
+    grid-template-columns: 1fr;
+    gap: 14px;
+  }
+
+  .occupancy .number {
+    font-size: 44px;
+  }
 }
